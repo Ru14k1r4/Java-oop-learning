@@ -10,8 +10,8 @@ public class Swap {
     MyInt a = new MyInt(3);
     MyInt b = new MyInt(2);
 
-    System.out.printf("Before:\t%d %d\n", a.i, b.i);
+    System.out.printf("Before:\ta = %d, b = %d\n", a.i, b.i);
     swap(a, b);
-    System.out.printf("After:\t%d %d\n", a.i, b.i);
+    System.out.printf("After:\ta = %d, b = %d\n", a.i, b.i);
   }
 }
