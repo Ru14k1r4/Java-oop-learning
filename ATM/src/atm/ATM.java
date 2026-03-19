@@ -142,8 +142,14 @@ public class ATM {
 					int i6=0;
 					for(; i6<10; i6++) {
 						if(bank[i6] != null && bank[i6].id.equals(id6)) {
-							bank[i6].check();
-							break;
+							if(!bank[i6].pwd.equals(pwd6)) {
+								System.out.printf("密碼錯誤\n");
+								break;
+							}
+							else {
+								bank[i6].check();
+								break;
+							}
 						}
 					}
 					if(i6==10) {
