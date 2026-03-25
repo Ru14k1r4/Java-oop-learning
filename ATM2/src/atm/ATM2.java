@@ -25,10 +25,10 @@ public class ATM {
 					for(int i=0; i<10; i++) {
 						if(bank[i] == null) {
 							bank[i] = new IcCard(iid, ipw, imoney);
-							System.out.printf("開戶成功!\nID: %s\n", bank[i].id);
+							System.out.printf("開戶成功!\nID: %s\n", bank[i].getid());
 							break;
 						}
-						else if(bank[i].id == iid) {
+						else if(bank[i].getid() == iid) {
 							System.out.printf("此帳號已存在\n");
 							break;
 						}
@@ -43,7 +43,7 @@ public class ATM {
 					for(int i=0; i<10; i++) {
 						if(bank[i] == null) {
 							bank[i] = new IcCard(ipw2, imoney2);
-							System.out.printf("開戶成功!\nID: %s\n", bank[i].id);
+							System.out.printf("開戶成功!\nID: %s\n", bank[i].getid());
 							break;
 						}
 					}
@@ -55,15 +55,15 @@ public class ATM {
 					String pwd = sc.next();
 					int i=0;
 					for(; i<10; i++) {
-						if(bank[i] != null && bank[i].id.equals(id)) {  //不能寫==字串
-							if(!bank[i].pwd.equals(pwd)) {
+						if(bank[i] != null && bank[i].getid().equals(id)) {  //不能寫==字串
+							if(!bank[i].getpwd().equals(pwd)) {
 								System.out.printf("密碼錯誤\n");
 								break;
 							}
 							else {
 								System.out.print("輸入存款金額\n: ");
 								int dmoney = sc.nextInt();
-								if(bank[i].diposit(dmoney)) {
+								if(bank[i].deposit(dmoney)) {
 									System.out.print("存款成功\n");
 								}
 							}
@@ -82,8 +82,8 @@ public class ATM {
 					String pwd2 = sc.next();
 					int i4=0;
 					for(; i4<10; i4++) {
-						if(bank[i4] != null && bank[i4].id.equals(id2)) {
-							if(!bank[i4].pwd.equals(pwd2)) {
+						if(bank[i4] != null && bank[i4].getid().equals(id2)) {
+							if(!bank[i4].getpwd().equals(pwd2)) {
 								System.out.printf("密碼錯誤\n");
 								break;
 							}
@@ -107,8 +107,8 @@ public class ATM {
 					String pwd5 = sc.next();
 					int i5 = 0;
 					for(; i5<10; i5++) {
-						if(bank[i5] != null && bank[i5].id.equals(id5)) {
-							if(!bank[i5].pwd.equals(pwd5)) {
+						if(bank[i5] != null && bank[i5].getid().equals(id5)) {
+							if(!bank[i5].getpwd().equals(pwd5)) {
 								System.out.printf("密碼錯誤\n");
 								break;
 							}
@@ -119,8 +119,9 @@ public class ATM {
 								
 								int b=0;
 								for(; b<10; b++) {
-									if(bank[b] != null && bank[b].id.equals(tid)) {
+									if(bank[b] != null && bank[b].getid().equals(tid)) {
 										bank[i5].transfer(bank[b], tmoney);
+										break;
 									}
 								}
 								if(b==10) {
@@ -141,8 +142,8 @@ public class ATM {
 					String pwd6 = sc.next();
 					int i6=0;
 					for(; i6<10; i6++) {
-						if(bank[i6] != null && bank[i6].id.equals(id6)) {
-							bank[i6].check();
+						if(bank[i6] != null && bank[i6].getid().equals(id6)) {
+							bank[i6].show();
 							break;
 						}
 					}
@@ -158,4 +159,3 @@ public class ATM {
 		}
 	}
 }
-
